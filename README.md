@@ -1,137 +1,135 @@
-🛒 SuperMart AI – Smart Supermarket & SmartRoute Delivery System
+🛒 SuperMart AI – Smart Supermarket & Intelligent Doorstep Delivery System
 
-SuperMart AI is a full stack smart supermarket application developed using Flutter, Flask, SQLite, OpenStreetMap and Machine Learning.
+SuperMart AI is a full-stack supermarket shopping and management application developed using Flutter, Flask, SQLite, OpenStreetMap and Machine Learning.
 
-The system provides separate features for customers and supermarket managers. Customers can browse products, manage their shopping cart, place orders, select delivery locations and use SmartRoute delivery features. Managers can monitor products, inventory, orders and AI based business information.
+The project is designed not only as an online supermarket application, but also as a smarter approach to doorstep delivery.
 
----
+One of the main highlights of SuperMart AI is the **SmartRoute Doorstep Delivery System**, where customers can select their exact gate or doorstep using an interactive map, receive an intelligent branch recommendation, track the delivery journey and securely confirm the final handover.
 
-🚀 Main Features
-
-👤 Customer Features
-
-- User registration and login
-- Browse supermarket products
-- View product information
-- Add products to shopping cart
-- Checkout and place orders
-- Delivery and pickup options
-- Smart branch recommendation
-- GPS delivery location selection
-- OpenStreetMap integration
-- SmartRoute delivery
-- Order tracking
-- Secure delivery verification
-
-📊 Manager Features
-
-- Manager dashboard
-- Product management
-- Inventory monitoring
-- Order management
-- Staff information
-- Branch information
-- Business performance information
-- AI-supported insights
-
-🤖 Artificial Intelligence Features
-
-The system also includes Machine Learning functionality for supermarket business analysis.
-
-Machine Learning is used to support areas such as:
-
-- Income prediction
-- Business performance analysis
-- Category-based analysis
-- Smart decision support
-- Rush-hour and staffing insights
+The system also introduces a **Smart Cancellation Policy** that considers the current order stage and the rider's distance from the customer's doorstep before allowing a cancellation.
 
 ---
 
-📱 Application Screenshots
+# 🌟 Main Project Highlight
 
-🛍️ Products
+## 🚚 SmartRoute Doorstep Delivery
 
-<p align="center">
-  <img src="screenshots/products.png" width="750">
-</p>
+Instead of asking the customer to enter only a normal text address, SuperMart allows the customer to select the **exact delivery point, gate or doorstep** directly on an OpenStreetMap.
 
-Customers can browse available supermarket products and view product information.
-
----
-
-🛒 Shopping Cart
-
-<p align="center">
-  <img src="screenshots/cart.png" width="750">
-</p>
-
-Customers can add products to their cart and manage items before placing an order.
-
----
-
- 💳 Checkout
-
-<p align="center">
-  <img src="screenshots/checkout.png" width="750">
-</p>
-
-The checkout section allows customers to review their order and continue with delivery or pickup.
-
----
-
-📍 SmartRoute Location Selection
+The selected GPS location is then used by the system for delivery planning and tracking.
 
 <p align="center">
   <img src="screenshots/map-location.png" width="750">
 </p>
 
-OpenStreetMap is integrated into the application to allow customers to select their delivery location.
+The SmartRoute delivery process includes:
+
+1. Exact GPS doorstep selection using OpenStreetMap.
+2. Draggable map marker for selecting the customer's exact gate or entrance.
+3. Customer current-location support.
+4. Delivery address and landmark information.
+5. Smart branch recommendation.
+6. Branch selection based on distance, stock availability, pending orders, preparation time and estimated delivery conditions.
+7. Delivery fee calculation.
+8. Delivery route visualization.
+9. Live rider location during delivery.
+10. Completed and remaining route information.
+11. Order delivery status tracking.
+12. Secure 4-digit delivery PIN for final handover.
+13. Delivery confirmation after the customer receives the order.
 
 ---
 
-🧠 Smart Branch Selection
+# 🧠 Smart Branch Recommendation
+
+SuperMart does not simply select the geographically closest supermarket branch.
+
+The system considers several operational factors before recommending a suitable branch for the customer's order.
 
 <p align="center">
   <img src="screenshots/smart-branch.png" width="750">
 </p>
 
-The Smart Branch feature helps select a suitable supermarket branch using information such as location, availability and delivery conditions.
+The recommendation can consider:
+
+Customer distance + Product stock + Pending orders + Preparation time + Estimated delivery time.
+
+This allows SuperMart to select a branch that may provide a better delivery experience instead of relying only on distance.
 
 ---
 
-🛠️ Technologies Used
+🚫 Intelligent Delivery Cancellation Policy
 
-| Area | Technology |
+Another special feature of SuperMart is its **stage-aware delivery cancellation system.
 
-| Mobile Application | Flutter |
-| Programming Language | Dart |
-| Backend API | Flask |
-| Backend Language | Python |
-| Database | SQLite |
-| Maps | OpenStreetMap |
-| Flutter Maps | flutter_map |
-| Location | Geolocation / GPS |
-| Machine Learning | XGBoost |
-| Data Processing | Python |
-| API Communication | REST API |
-| Version Control | Git & GitHub |
+Many delivery applications use a simple cancellation button. SuperMart makes the decision based on how far the order has already progressed.
+
+Before confirming a cancellation, the customer is required to provide a valid cancellation reason. The system then checks the current order status and applies the appropriate cancellation rule.
+
+| Order Stage | Cancellation Rule |
+| Pending | Free cancellation |
+| Confirmed | Free cancellation |
+| Preparing | Cancellation allowed with Rs. 100 preparation fee |
+| Ready | Cancellation allowed with Rs. 150 packing fee |
+| Rider Assigned | Cancellation allowed, but delivery-related charges may apply |
+| Out for Delivery – Rider more than 300m away | Cancellation can still be requested; delivery fee + Rs. 100 travelling fee applies |
+| Rider within 300m of doorstep | Cancellation is locked |
+| Delivered | Cancellation is not available |
+| Already Cancelled | No further cancellation request is allowed |
+
+When the rider reaches the final **300-metre doorstep zone**, the system protects the delivery from unnecessary last-minute cancellation.
+
+The customer will receive a message such as:
+
+Cancellation is unavailable because the rider is within 300 metres of your doorstep.
+
+This approach helps protect both the customer and supermarket operations by considering food/product preparation, packing, delivery effort and the rider's travelling distance.
+
+If a valid cancellation is completed, the system can restore the cancelled order stock, release the assigned rider for another delivery and invalidate the delivery PIN.
 
 ---
 
-🏗️ System Architecture
+🔐 Secure Doorstep Handover
 
-The SuperMart system follows a client-server architecture.
+SuperMart also provides additional protection for the final delivery stage.
 
-Flutter Mobile Application
-          |
-          |
-       REST API
-          |
-          v
-      Flask Backend
-          |
-   -------------------
-   |        |        |
-SQLite     ML      Business
-Database  Models     Logic
+When a doorstep delivery is dispatched, a **4-digit delivery PIN** is generated for the order.
+
+The PIN is used to verify that the order has reached the correct customer before marking the delivery as completed.
+
+This creates a more controlled handover process than simply allowing a rider to mark an order as delivered.
+
+---
+
+📍 Smart Delivery Flow
+
+Customer selects products
+          ↓
+      Shopping Cart
+          ↓
+        Checkout
+          ↓
+ Select Doorstep Delivery
+          ↓
+Select exact gate/doorstep
+   using OpenStreetMap
+          ↓
+Smart Branch Recommendation
+          ↓
+     Order Confirmed
+          ↓
+Preparation & Packing
+          ↓
+      Rider Assigned
+          ↓
+   Out for Delivery
+          ↓
+Live Route / Rider Tracking
+          ↓
+  Rider approaches doorstep
+          ↓
+Cancellation locked within 300m
+          ↓
+4-digit Delivery PIN Verification
+          ↓
+      Order Delivered
