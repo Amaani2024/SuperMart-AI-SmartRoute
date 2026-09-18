@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: supermart-ai-api
+    runtime: docker
+    plan: free
+    region: singapore
+    healthCheckPath: /health
+    initialDeployHook: python api/seed_data.py
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: supermart-db
+          property: connectionString
+databases:
+  - name: supermart-db
+    plan: free
+    region: singapore
